@@ -18,4 +18,4 @@ crash.log
 Игнорируются все файлы
 .terraformrc
 terraform.rc для Win
-New line
+pycharm_test
