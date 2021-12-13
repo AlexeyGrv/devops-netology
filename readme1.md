@@ -8,16 +8,23 @@
   ls /abrvalg &>/dev/pts/1 
   ls: невозможно получить доступ к '/abrvalg': Нет такого файла или каталога
 
-5 alexeygrv@alexeygrv-G771JW:~$ echo DevOps@Netology > learning > new_var
-  alexeygrv@alexeygrv-G771JW:~$ echo $new_var 
-  DevOps@Netology
+5 
+  ~/test$ cat test
+  line
+  new line
+  second line
+  ~/test$ cat < test > out
+  ~/test$ cat out
+  line
+  new line
+  second line
 
-6 alexeygrv@alexeygrv-G771JW:~$ tty
+6 ~$ tty
   /dev/tty3
-  alexeygrv@alexeygrv-G771JW:~$ echo netology 1>/dev/pts/0
-  alexeygrv@alexeygrv-G771JW:~$ tty
+  ~$ echo netology 1>/dev/pts/0
+  ~$ tty
   /dev/pts/0
-  alexeygrv@alexeygrv-G771JW:~$ netology
+  ~$ netology
 
 7 bash 5>&1 создали файловый дескриптор т.е открытый файл, который является идентификатором потока ввода-вывода и перенаправили в stdout
   lexeygrv@alexeygrv-G771JW:~/vg-project$ ls -l /proc/$$/fd/
@@ -58,7 +65,12 @@
    
 12 vagrant@netology1:~$ ssh localhost 'tty'
    not a tty
-   возможно после vagrant ssh tty уже определены для текущего пользователя как для localhost /dev/pts/0 так и виртуальной машины /dev/pts/ 1 и нужно подключаться под другим пользователем
+   возможно после vagrant ssh tty уже определены для текущего пользователя как для localhost /dev/pts/0 так и виртуальной машины /dev/pts/ 1 
+   и нужно подключаться под другим пользователем
+   * -t команда исполняется c принудительным созданием псевдотерминала
+13
+   редактируем файл /etc/sysctl.d/10-ptrace.conf kernel.yama.ptrace_scope = 0
+   sudo reptyr -T <PID_NUMBER>
 
 14  команда tee делает вывод одновременно и в файл, указаный в качестве параметра, и в stdout, 
     в данном примере команда получает вывод из stdin, перенаправленный через pipe от stdout команды echo
