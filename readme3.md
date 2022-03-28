@@ -24,7 +24,7 @@
     sudo touch /usr/local/bin/node_exporter.env
     echo "EXTRA_OPTS=\"--log.level=info\"" | sudo tee /usr/local/bin/node_exporter.env
 
-+ изменить unit-файл:
+изменить unit-файл:
 
     [Service]
     EnvironmentFile=/usr/local/bin/node_exporter.env
@@ -66,15 +66,14 @@
 
     curl http://localhost:9100/metrics | grep cpu
 
-+ CPU: user — время выполнения обычных процессов, которые выполняются в режиме пользователя (в user mode, userland);
-+ nice — время выполнения процессов с приоритетом nice, которые выполняются в режиме пользователя;
-+ system — время выполнения процессов, которые выполняются в режиме ядра (kernel mode);
-+ idle — время простоя, CPU ничем не занят;
-+ iowait — время ожидания I/O операций;
-+ irq и softirq — время обработки аппаратных и программных прерываний;
-+ steal — время, которое используют другие операционные системы (при виртуализации);
-+ guest — время выполнения «гостевых» процессов (при виртуализации).
-
+CPU: user — время выполнения обычных процессов, которые выполняются в режиме пользователя (в user mode, userland);
+nice — время выполнения процессов с приоритетом nice, которые выполняются в режиме пользователя;
+system — время выполнения процессов, которые выполняются в режиме ядра (kernel mode);
+idle — время простоя, CPU ничем не занят;
+iowait — время ожидания I/O операций;
+irq и softirq — время обработки аппаратных и программных прерываний;
+steal — время, которое используют другие операционные системы (при виртуализации);
+guest — время выполнения «гостевых» процессов (при виртуализации).
 
     node_cpu_seconds_total{cpu="0",mode="idle"} 1351.39
     node_cpu_seconds_total{cpu="0",mode="iowait"} 8.89
@@ -85,8 +84,7 @@
     node_cpu_seconds_total{cpu="0",mode="system"} 54.69
     node_cpu_seconds_total{cpu="0",mode="user"} 126.57
 
-+ MEM: MemTotal - количество памяти; MemFree и MemAvailable - сводобная и доступная (включая кеш) память; SwapTotal, SwapFree, SwapCached - своп, если слишком много занято -- памяти не хватает.
-
+MEM: MemTotal - количество памяти; MemFree и MemAvailable - сводобная и доступная (включая кеш) память; SwapTotal, SwapFree, SwapCached - своп, если слишком много занято -- памяти не хватает.
 
     node_memory_MemAvailable_bytes 7.7056e+08
     node_memory_MemFree_bytes 7.11176192e+08
@@ -95,17 +93,15 @@
     node_memory_SwapFree_bytes 1.027600384e+09
     node_memory_SwapTotal_bytes 1.027600384e+09
 
-+ DISK: size_bytes и avail_bytes покажут объём и свободное место; readonly=1 может говорить о проблемах ФС, из-за чего она перешла в режим только для чтения; io_now - интенсивность работы с диском в текущий момент.
-
+DISK: size_bytes и avail_bytes покажут объём и свободное место; readonly=1 может говорить о проблемах ФС, из-за чего она перешла в режим только для чтения; io_now - интенсивность работы с диском в текущий момент.
 
     node_filesystem_avail_bytes{device="/dev/mapper/vgvagrant-root",fstype="ext4",mountpoint="/"} 6.0591689728e+10
     node_filesystem_readonly{device="/dev/mapper/vgvagrant-root",fstype="ext4",mountpoint="/"} 0
     node_filesystem_size_bytes{device="/dev/mapper/vgvagrant-root",fstype="ext4",mountpoint="/"} 6.5827115008e+10
     node_disk_io_now{device="sda"} 0
 
-+ NET: carrier_down, carrier_up - если много, значит что-то с кабелем; info - общая информация по нитерфейсу; mtu_bytes - может быть важно для диагностики потерь или если трафик хостов не проходит через маршрутизатор; receive_errs_total, transmit_errs_total, receive_packets_total, transmit_packets_total - ошибки передачи, в зависимости от объёма если больше процента, вероятно какие-то проблемы сети или с хостом
+NET: carrier_down, carrier_up - если много, значит что-то с кабелем; info - общая информация по нитерфейсу; mtu_bytes - может быть важно для диагностики потерь или если трафик хостов не проходит через маршрутизатор; receive_errs_total, transmit_errs_total, receive_packets_total, transmit_packets_total - ошибки передачи, в зависимости от объёма если больше процента, вероятно какие-то проблемы сети или с хостом
 
- 
     node_network_carrier_down_changes_total{device="eth0"} 1
     node_network_carrier_up_changes_total{device="eth0"} 1
     node_network_info{address="08:00:27:73:60:cf",broadcast="ff:ff:ff:ff:ff:ff",device="eth0",duplex="full",ifalias="",operstate="up"} 1
