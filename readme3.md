@@ -130,6 +130,7 @@ NET: carrier_down, carrier_up - если много, значит что-то с
 
 После успешной перезагрузки в браузере на своем ПК (не в виртуальной машине) вы должны суметь зайти на localhost:19999.
 
+![](https://github.com/AlexeyGrv/devops-netology/blob/main/Снимок%20экрана%20от%202022-03-28%2022-22-02.png)
  
 #### 4. Можно ли по выводу dmesg понять, осознает ли ОС, что загружена не на настоящем оборудовании, а на системе виртуализации?
     vagrant@vagrant:~$ sudo dmesg | grep "Hypervisor detected"
@@ -156,7 +157,7 @@ ulimit --help
     root        1233  0.0  0.0   8076   592 pts/0    S+   19:50   0:00 sleep 1h
     vagrant     1286  0.0  0.0   8900   736 pts/1    S+   19:53   0:00 grep --color=auto sleep
 
-    # sudo nsenter -t 1233  -p -r ps -ef
+    # nsenter -t 1233  -p -r ps -ef
     UID          PID    PPID  C STIME TTY          TIME CMD
     root           1       0  0 19:50 pts/0    00:00:00 sleep 1h
     root           2       0  0 19:55 pts/1    00:00:00 ps -ef
