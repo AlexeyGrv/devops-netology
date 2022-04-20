@@ -89,4 +89,4 @@ dig -x 8.8.8.8 +noall +answer
 8.8.8.8.in-addr.arpa.	1732	IN	PTR	dns.google.
 dig -x 8.8.4.4 +noall +answer
 4.4.8.8.in-addr.arpa.	3059	IN	PTR	dns.google.
-``
+```
