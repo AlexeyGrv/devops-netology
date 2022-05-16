@@ -115,5 +115,5 @@ UNCONN 0      0       [fe80::9fd5:7dfb:f2dd:56eb]%wlp3s0:546            [::]:*
 ```
 #### 5. Используя diagrams.net, создайте L3 диаграмму вашей домашней сети или любой другой сети, с которой вы работали.
 
-
+![](https://github.com/AlexeyGrv/devops-netology/blob/main/images/network_diagram.png)
 
