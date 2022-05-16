@@ -1,22 +1,23 @@
-1. Подключитесь к публичному маршрутизатору в интернет. Найдите маршрут к вашему публичному IP
+### 1. Подключитесь к публичному маршрутизатору в интернет. Найдите маршрут к вашему публичному IP
 
-route-views>show ip rout 95.37.0.65                
-Routing entry for 95.37.0.0/18
-  Known via "bgp 6447", distance 20, metric 0
-  Tag 2497, type external
-  Last update from 202.232.0.2 7w0d ago
-  Routing Descriptor Blocks:
-  * 202.232.0.2, from 202.232.0.2, 7w0d ago
-      Route metric is 0, traffic share count is 1
-      AS Hops 2
-      Route tag 2497
-      MPLS label: none
-route-views>show bgp camera P:Q
-route-views>P?
-*p=ping
-pad  ping  port-channel  ppp
-
-
+```sh
+  route-views>show ip rout 95.37.0.65                
+  Routing entry for 95.37.0.0/18
+    Known via "bgp 6447", distance 20, metric 0
+    Tag 2497, type external
+    Last update from 202.232.0.2 7w0d ago
+    Routing Descriptor Blocks:
+    * 202.232.0.2, from 202.232.0.2, 7w0d ago
+        Route metric is 0, traffic share count is 1
+        AS Hops 2
+        Route tag 2497
+        MPLS label: none
+  route-views>show bgp camera P:Q
+  route-views>P?
+  *p=ping
+  pad  ping  port-channel  ppp
+```
+```sh
 route-views>show bgp 95.37.0.65                    
 BGP routing table entry for 95.37.0.0/18, version 281622434
 Paths: (24 available, best #20, table default)
@@ -185,9 +186,9 @@ Paths: (24 available, best #20, table default)
       path 7FE1872A7788 RPKI State not found
       rx pathid: 0, tx pathid: 0
 route-views> 
-
-2. Создайте dummy0 интерфейс в Ubuntu. Добавьте несколько статических маршрутов. Проверьте таблицу маршрутизации.
-
+```    
+### 2. Создайте dummy0 интерфейс в Ubuntu. Добавьте несколько статических маршрутов. Проверьте таблицу маршрутизации.
+```sh
 # modprobe -v dummy numdummies=2
 # ip link add dummy0 type dummy
 # ip addr add 10.1.1.1/32 dev dummy0
@@ -201,14 +202,13 @@ route-views>
 default via 192.168.0.1 dev enp4s0f1 proto dhcp metric 20100 
 default via 192.168.0.1 dev wlp3s0 proto dhcp metric 20600 
 8.8.8.0/24 via 10.1.1.1 dev dummy0 
-10.1.1.1 via 192.168.0.1 dev enp4s0f1 
 169.254.0.0/16 dev wlp3s0 scope link metric 1000 
 192.168.0.0/24 via 10.1.1.1 dev dummy0 
 192.168.0.0/24 dev enp4s0f1 proto kernel scope link src 192.168.0.163 metric 100 
 192.168.0.0/24 dev wlp3s0 proto kernel scope link src 192.168.0.185 metric 600 
-
-3. Проверьте открытые TCP порты в Ubuntu, какие протоколы и приложения используют эти порты? Приведите несколько примеров.
-
+```
+### 3. Проверьте открытые TCP порты в Ubuntu, какие протоколы и приложения используют эти порты? Приведите несколько примеров.
+```sh
 $ ss -tnlp
 State     Recv-Q    Send-Q       Local Address:Port        Peer Address:Port   Process    
 LISTEN    0         4096         127.0.0.53%lo:53               0.0.0.0:*                 
@@ -228,9 +228,9 @@ LISTEN    0         4096                     *:9100                   *:*
 
 :53 - DNS
 :139 - NETBIOS-SSN
-
-4. Проверьте используемые UDP сокеты в Ubuntu, какие протоколы и приложения используют эти порты?
-
+```
+### 4. Проверьте используемые UDP сокеты в Ubuntu, какие протоколы и приложения используют эти порты?
+```sh
 ss -unap
 State  Recv-Q Send-Q                       Local Address:Port   Peer Address:Port Process 
 UNCONN 0      0                                  0.0.0.0:5353        0.0.0.0:*            
@@ -256,7 +256,7 @@ UNCONN 0      0                                     [::]:55066          [::]:*
 UNCONN 0      0                                    [::1]:323            [::]:*            
 UNCONN 0      0      [fe80::fd27:c931:70aa:479]%enp4s0f1:546            [::]:*            
 UNCONN 0      0       [fe80::9fd5:7dfb:f2dd:56eb]%wlp3s0:546            [::]:*   
-
+```
 5. Используя diagrams.net, создайте L3 диаграмму вашей домашней сети или любой другой сети, с которой вы работали.
 
 
